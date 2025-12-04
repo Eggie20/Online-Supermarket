@@ -12,15 +12,49 @@
     gap: var(--space-3) !important;
   }
 
-  /* Product actions in cart */
+  /* Product actions in cart - keep on right but allow wrapping */
   .card .card-body > div > div:last-child {
-    text-align: left !important;
+    text-align: right !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-2);
+    width: 100%;
   }
 
-  /* Quantity controls */
+  /* Quantity controls - KEEP HORIZONTAL AND RIGHT ALIGNED */
   .card .card-body > div > div > div[style*="display: flex"] {
-    flex-wrap: wrap;
-    justify-content: flex-start !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+    width: auto !important;
+  }
+
+  /* Quantity buttons - smaller on mobile */
+  .quantity-decrease,
+  .quantity-increase {
+    min-width: 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Quantity number */
+  .card .card-body span[style*="min-width: 30px"] {
+    min-width: 40px !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    flex-shrink: 0 !important;
   }
 
   /* Order summary - remove sticky on mobile */
@@ -41,6 +75,12 @@
   .page-subtitle {
     font-size: var(--text-sm) !important;
   }
+
+  /* Remove button - full width on mobile */
+  .remove-item {
+    width: 100%;
+    max-width: 120px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -55,6 +95,21 @@
     font-size: 0.875rem;
   }
 
+  /* Even smaller quantity buttons */
+  .quantity-decrease,
+  .quantity-increase {
+    min-width: 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 1.1rem !important;
+  }
+
+  /* Quantity number - slightly smaller */
+  .card .card-body span[style*="min-width: 30px"] {
+    min-width: 35px !important;
+    font-size: 0.95rem !important;
+  }
+
   /* Product image in cart */
   .card .card-body > div > div:first-child {
     width: 70px !important;
@@ -67,3 +122,4 @@
     object-fit: cover;
   }
 }
+
