@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Settings - Seller Portal">
+  <title>Settings - Seller Portal</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/seller-layout.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-brand">
+          <span class="sidebar-brand-icon">🛒</span>
+          <span>Seller Portal</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Main</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📊</span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="products-manage.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📦</span>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="orders.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📋</span>
+                <span>Orders</span>
+                <span class="sidebar-link-badge">3</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="analytics.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📈</span>
+                <span>Analytics</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Store</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="store-profile.html" class="sidebar-link">
+                <span class="sidebar-link-icon">🏪</span>
+                <span>Store Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="settings.html" class="sidebar-link active">
+                <span class="sidebar-link-icon">⚙️</span>
+                <span>Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Support</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="help-center.html" class="sidebar-link">
+                <span class="sidebar-link-icon">❓</span>
+                <span>Help Center</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="../buyer/index.html" class="sidebar-link">
+                <span class="sidebar-link-icon">🏠</span>
+                <span>View Store</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar" style="background: var(--gradient-primary);">
+            CM
+          </div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Cabadbaran Market</div>
+            <div class="sidebar-user-role">Seller</div>
+          </div>
+          <span>⋮</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="sidebarToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <h1 class="topbar-title">Settings</h1>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-actions">
+            <button class="topbar-action" title="Notifications">
+              <span>🔔</span>
+              <span class="topbar-action-badge">5</span>
+            </button>
+            <button class="topbar-action" title="Messages">
+              <span>💬</span>
+              <span class="topbar-action-badge">2</span>
+            </button>
+            <button class="topbar-action" title="Logout">
+              <span>🚪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="page-header-top">
+            <div>
+              <h2 class="page-title">Account Settings ⚙️</h2>
+              <p class="page-subtitle">Manage your account preferences and security</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap: var(--space-6);">
+          <!-- Account Settings -->
+          <div>
+            <div class="card mb-6">
+              <div class="card-header">
+                <h3 class="card-title">Account Information</h3>
+              </div>
+              <div class="card-body">
+                <form id="accountForm">
+                  <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-input" value="Juan Dela Cruz" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-input" value="seller@cabadbaran.com" required>
+                    <p class="text-muted" style="margin-top: var(--space-1); font-size: 0.875rem;">
+                      ✓ Verified
+                    </p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-input" value="+63 912 345 6789" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                    Save Changes
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Change Password</h3>
+              </div>
+              <div class="card-body">
+                <form id="passwordForm">
+                  <div class="form-group">
+                    <label class="form-label">Current Password *</label>
+                    <input type="password" class="form-input" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">New Password *</label>
+                    <input type="password" class="form-input" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Confirm New Password *</label>
+                    <input type="password" class="form-input" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                    Update Password
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications & Preferences -->
+          <div>
+            <div class="card mb-6">
+              <div class="card-header">
+                <h3 class="card-title">Notification Preferences</h3>
+              </div>
+              <div class="card-body">
+                <div style="display: grid; gap: var(--space-4);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; margin-bottom: var(--space-1);">Email Notifications</div>
+                      <div class="text-muted" style="font-size: 0.875rem;">Receive order updates via email</div>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; margin-bottom: var(--space-1);">SMS Notifications</div>
+                      <div class="text-muted" style="font-size: 0.875rem;">Get text alerts for new orders</div>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; margin-bottom: var(--space-1);">Marketing Emails</div>
+                      <div class="text-muted" style="font-size: 0.875rem;">Receive promotional content</div>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; margin-bottom: var(--space-1);">Low Stock Alerts</div>
+                      <div class="text-muted" style="font-size: 0.875rem;">Get notified when products run low</div>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-6">
+              <div class="card-header">
+                <h3 class="card-title">Store Preferences</h3>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="form-label">Currency</label>
+                  <select class="form-input">
+                    <option>PHP (₱)</option>
+                    <option>USD ($)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Timezone</label>
+                  <select class="form-input">
+                    <option>Asia/Manila (GMT+8)</option>
+                    <option>UTC</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Language</label>
+                  <select class="form-input">
+                    <option>English</option>
+                    <option>Filipino</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="border-color: var(--danger);">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--danger);">Danger Zone</h3>
+              </div>
+              <div class="card-body">
+                <div style="margin-bottom: var(--space-4);">
+                  <h4 style="margin-bottom: var(--space-2);">Deactivate Account</h4>
+                  <p class="text-muted" style="margin-bottom: var(--space-3);">
+                    Temporarily disable your store. You can reactivate it anytime.
+                  </p>
+                  <button class="btn btn-outline" style="border-color: var(--warning); color: var(--warning);">
+                    Deactivate Store
+                  </button>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid var(--border); margin: var(--space-4) 0;">
+
+                <div>
+                  <h4 style="margin-bottom: var(--space-2);">Delete Account</h4>
+                  <p class="text-muted" style="margin-bottom: var(--space-3);">
+                    Permanently delete your account and all data. This action cannot be undone.
+                  </p>
+                  <button class="btn" style="background: var(--danger); color: white;">
+                    Delete Account
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/seller-main.js"></script>
+  <script src="assets/js/settings.js"></script>
+
+  <style>
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--primary);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+  </style>
+</body>
+</html>

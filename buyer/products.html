@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse products from local supermarkets in Cabadbaran City. Real-time stock availability.">
+  <title>Browse Products - Cabadbaran City Online Supermarket</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+</head>
+<body>
+  <!-- Header/Navigation -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+          <span style="font-size: 2rem;">🛒</span>
+          <span>Cabadbaran Market</span>
+        </a>
+        
+        <div class="navbar-search">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Search for products..."
+            id="searchInput"
+          >
+        </div>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <div class="navbar-actions">
+          <a href="products.html" class="navbar-link">
+            <span>🏪</span>
+            <span class="mobile-hidden">Browse</span>
+          </a>
+          
+          <a href="wishlist.html" class="navbar-link">
+            <span>❤️</span>
+            <span class="mobile-hidden">Wishlist</span>
+          </a>
+          
+          <a href="cart.html" class="navbar-link">
+            <span>🛒</span>
+            <span class="mobile-hidden">Cart</span>
+            <span class="navbar-badge" style="display: none;">0</span>
+          </a>
+          
+          <a href="login.html" class="btn btn-primary btn-sm">
+            Login
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="section">
+    <div class="container">
+      <div class="products-container">
+        <!-- Sidebar Filters -->
+        <aside class="products-sidebar">
+          <!-- Category Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title">
+              <span>Categories</span>
+              <span class="filter-toggle-icon">▼</span>
+            </h3>
+            <div class="filter-options" id="categoryFilters">
+              <label class="form-check">
+                <input type="checkbox" class="form-check-input" value="all" checked>
+                <span class="form-check-label">All Categories</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title">
+              <span>Price Range</span>
+              <span class="filter-toggle-icon">▼</span>
+            </h3>
+            <div class="filter-content">
+              <div class="form-group">
+                <label class="form-label">Min Price</label>
+                <input type="number" class="form-input" id="minPrice" placeholder="₱0" min="0">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Price</label>
+                <input type="number" class="form-input" id="maxPrice" placeholder="₱1000" min="0">
+              </div>
+              <button class="btn btn-primary btn-sm btn-block" onclick="applyFilters()">
+                Apply Price Filter
+              </button>
+            </div>
+          </div>
+
+          <!-- Stock Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title">
+              <span>Availability</span>
+              <span class="filter-toggle-icon">▼</span>
+            </h3>
+            <div class="filter-options">
+              <label class="form-check">
+                <input type="checkbox" class="form-check-input stock-filter" value="in-stock" checked>
+                <span class="form-check-label">In Stock</span>
+              </label>
+              <label class="form-check">
+                <input type="checkbox" class="form-check-input stock-filter" value="low-stock" checked>
+                <span class="form-check-label">Low Stock</span>
+              </label>
+              <label class="form-check">
+                <input type="checkbox" class="form-check-input stock-filter" value="out-of-stock">
+                <span class="form-check-label">Out of Stock</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Seller Filter -->
+          <div class="filter-section">
+            <h3 class="filter-title">
+              <span>Sellers</span>
+              <span class="filter-toggle-icon">▼</span>
+            </h3>
+            <div class="filter-options" id="sellerFilters">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Clear Filters -->
+          <button class="btn btn-ghost btn-block" onclick="clearFilters()">
+            Clear All Filters
+          </button>
+        </aside>
+
+        <!-- Products Main Area -->
+        <div class="products-main">
+          <!-- Products Header -->
+          <div class="products-header">
+            <div class="products-count" id="productsCount">
+              Loading products...
+            </div>
+            <div class="products-sort">
+              <label for="sortSelect" style="font-weight: var(--font-medium); margin-right: var(--space-2);">
+                Sort by:
+              </label>
+              <select class="form-select" id="sortSelect" style="width: auto; padding: var(--space-2) var(--space-4);">
+                <option value="featured">Featured</option>
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="price-asc">Price (Low to High)</option>
+                <option value="price-desc">Price (High to Low)</option>
+                <option value="stock-desc">Stock (High to Low)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="products-grid" id="productsGrid">
+            <!-- Products loaded by JavaScript -->
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="pagination">
+            <!-- Pagination loaded by JavaScript -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-state-icon">📦</div>
+            <h3 class="empty-state-title">No Products Found</h3>
+            <p class="empty-state-text">Try adjusting your filters or search terms</p>
+            <button class="btn btn-primary" onclick="clearFilters()">
+              Clear Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p style="color: rgba(255,255,255,0.7);">
+            Connecting Cabadbaran City's local supermarkets with smart shoppers.
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="products.html" class="footer-link">Browse Products</a>
+            <a href="register.html" class="footer-link">Sign Up</a>
+            <a href="login.html" class="footer-link">Login</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <a href="mailto:info@cabadbaran-market.com" class="footer-link">info@cabadbaran-market.com</a>
+            <a href="tel:+639123456789" class="footer-link">+63 912 345 6789</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cabadbaran City Online Supermarket. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/filter-drawer.js"></script>
+  <script src="assets/js/products.js"></script>
+</body>
+</html>

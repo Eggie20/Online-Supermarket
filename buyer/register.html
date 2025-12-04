@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Create your account - Cabadbaran City Online Supermarket"
+  />
+  <meta
+    name="keywords"
+    content="register, sign up, create account, Cabadbaran supermarket"
+  />
+  <title>Register - Cabadbaran City Online Supermarket</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+</head>
+<body>
+  <!-- Header/Navigation -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+          <span style="font-size: 2rem">🛒</span>
+          <span>Cabadbaran Market</span>
+        </a>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="navbar-actions">
+          <a href="products.html" class="navbar-link">
+            <span>🏪</span>
+            <span class="mobile-hidden">Browse</span>
+          </a>
+
+          <a href="login.html" class="btn btn-primary btn-sm"> Login </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="section" style="min-height: 100vh; display: flex; align-items: center;">
+      <div class="container">
+        <div style="max-width: 500px; margin: 0 auto;">
+          <!-- Form Card -->
+          <div class="card animate-fadeIn">
+            <div class="card-header" style="text-align: center; border-bottom: 1px solid var(--border);">
+              <h1 class="card-title" style="margin-bottom: var(--space-2);">Create Account</h1>
+              <p class="text-muted">Join Cabadbaran Market today</p>
+            </div>
+
+            <div class="card-body">
+              <form id="registerForm" class="form">
+                <!-- Full Name -->
+                <div class="form-group">
+                  <label for="fullName" class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    class="form-input"
+                    placeholder="Enter your full name"
+                    required
+                    aria-label="Full Name"
+                  />
+                  <span class="form-error" id="fullNameError"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="Enter your email"
+                    required
+                    aria-label="Email Address"
+                  />
+                  <span class="form-error" id="emailError"></span>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="form-input"
+                    placeholder="Enter your phone number"
+                    required
+                    aria-label="Phone Number"
+                  />
+                  <span class="form-error" id="phoneError"></span>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group">
+                  <label for="address" class="form-label">Address</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    class="form-input"
+                    placeholder="Enter your address"
+                    required
+                    aria-label="Address"
+                  />
+                  <span class="form-error" id="addressError"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                  <label for="password" class="form-label">Password</label>
+                  <div style="position: relative;">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      class="form-input"
+                      placeholder="Create a strong password"
+                      required
+                      aria-label="Password"
+                    />
+                    <button
+                      type="button"
+                      class="password-toggle"
+                      onclick="togglePasswordVisibility('password')"
+                      aria-label="Toggle password visibility"
+                      style="
+                        position: absolute;
+                        right: var(--space-3);
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        font-size: 1.2rem;
+                      "
+                    >
+                      👁️
+                    </button>
+                  </div>
+                  <span class="form-error" id="passwordError"></span>
+                  <!-- Password Strength Indicator -->
+                  <div style="margin-top: var(--space-2);">
+                    <div style="display: flex; gap: var(--space-1); margin-bottom: var(--space-1);">
+                      <div class="password-strength-bar" id="strengthBar1"></div>
+                      <div class="password-strength-bar" id="strengthBar2"></div>
+                      <div class="password-strength-bar" id="strengthBar3"></div>
+                      <div class="password-strength-bar" id="strengthBar4"></div>
+                    </div>
+                    <small class="text-muted" id="strengthText">Password strength: Weak</small>
+                  </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <div style="position: relative;">
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      class="form-input"
+                      placeholder="Confirm your password"
+                      required
+                      aria-label="Confirm Password"
+                    />
+                    <button
+                      type="button"
+                      class="password-toggle"
+                      onclick="togglePasswordVisibility('confirmPassword')"
+                      aria-label="Toggle password visibility"
+                      style="
+                        position: absolute;
+                        right: var(--space-3);
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        font-size: 1.2rem;
+                      "
+                    >
+                      👁️
+                    </button>
+                  </div>
+                  <span class="form-error" id="confirmPasswordError"></span>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="form-group">
+                  <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                    <input
+                      type="checkbox"
+                      id="terms"
+                      name="terms"
+                      required
+                      aria-label="Accept terms and conditions"
+                    />
+                    <span>
+                      I agree to the
+                      <a href="#" style="color: var(--primary); text-decoration: none;">
+                        Terms & Conditions
+                      </a>
+                      and
+                      <a href="#" style="color: var(--primary); text-decoration: none;">
+                        Privacy Policy
+                      </a>
+                    </span>
+                  </label>
+                  <span class="form-error" id="termsError"></span>
+                </div>
+
+                <!-- Newsletter Opt-in -->
+                <div class="form-group">
+                  <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                    <input
+                      type="checkbox"
+                      id="newsletter"
+                      name="newsletter"
+                      aria-label="Subscribe to newsletter"
+                    />
+                    <span>Subscribe to our newsletter for deals and updates</span>
+                  </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-4);">
+                  Create Account
+                </button>
+
+                <!-- Login Link -->
+                <p style="text-align: center; margin-top: var(--space-4); color: var(--text-light);">
+                  Already have an account?
+                  <a href="login.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+                    Login here
+                  </a>
+                </p>
+
+                <!-- Seller Link -->
+                <p style="text-align: center; margin-top: var(--space-3); color: var(--text-light);">
+                  Want to sell on our platform?
+                  <a href="../seller/seller-register.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+                    Become a seller
+                  </a>
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Info Section -->
+          <div style="margin-top: var(--space-6); text-align: center; color: var(--text-light);">
+            <p>
+              <strong>Why create an account?</strong>
+            </p>
+            <ul style="list-style: none; padding: 0; margin-top: var(--space-3);">
+              <li style="margin-bottom: var(--space-2);">✓ Save your favorite products</li>
+              <li style="margin-bottom: var(--space-2);">✓ Quick checkout process</li>
+              <li style="margin-bottom: var(--space-2);">✓ Track your orders</li>
+              <li>✓ Exclusive deals and offers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p style="color: rgba(255, 255, 255, 0.7);">
+            Connecting Cabadbaran City's local supermarkets with smart shoppers.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="products.html" class="footer-link">Browse Products</a>
+            <a href="login.html" class="footer-link">Login</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <a href="mailto:info@cabadbaran-market.com" class="footer-link">
+              info@cabadbaran-market.com
+            </a>
+            <a href="tel:+639123456789" class="footer-link">+63 912 345 6789</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cabadbaran City Online Supermarket. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Styles for Password Strength Indicator -->
+  <style>
+    .password-strength-bar {
+      height: 4px;
+      background-color: var(--border);
+      border-radius: 2px;
+      flex: 1;
+      transition: background-color 0.3s ease;
+    }
+
+    .password-strength-bar.weak {
+      background-color: var(--danger);
+    }
+
+    .password-strength-bar.fair {
+      background-color: var(--warning);
+    }
+
+    .password-strength-bar.good {
+      background-color: #3498db;
+    }
+
+    .password-strength-bar.strong {
+      background-color: var(--success);
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/products-data.js"></script>
+
+  <!-- Register Page Script -->
+  <script>
+    // Password visibility toggle
+    function togglePasswordVisibility(fieldId) {
+      const field = document.getElementById(fieldId);
+      field.type = field.type === 'password' ? 'text' : 'password';
+    }
+
+    // Password strength checker
+    function checkPasswordStrength(password) {
+      let strength = 0;
+      const bars = document.querySelectorAll('.password-strength-bar');
+      const strengthText = document.getElementById('strengthText');
+
+      // Reset bars
+      bars.forEach(bar => {
+        bar.className = 'password-strength-bar';
+      });
+
+      if (password.length >= 8) strength++;
+      if (password.length >= 12) strength++;
+      if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password) && /[!@#$%^&*]/.test(password)) strength++;
+
+      // Update bars
+      const strengthLevels = ['Weak', 'Fair', 'Good', 'Strong'];
+      const strengthClasses = ['weak', 'fair', 'good', 'strong'];
+
+      for (let i = 0; i < strength; i++) {
+        bars[i].classList.add(strengthClasses[i]);
+      }
+
+      strengthText.textContent = `Password strength: ${strengthLevels[strength] || 'Weak'}`;
+    }
+
+    // Form validation
+    function validateForm(formData) {
+      const errors = {};
+
+      // Full Name validation
+      if (!formData.fullName.trim()) {
+        errors.fullName = 'Full name is required';
+      } else if (formData.fullName.trim().length < 3) {
+        errors.fullName = 'Full name must be at least 3 characters';
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formData.email.trim()) {
+        errors.email = 'Email is required';
+      } else if (!emailRegex.test(formData.email)) {
+        errors.email = 'Please enter a valid email address';
+      }
+
+      // Phone validation
+      if (!formData.phone.trim()) {
+        errors.phone = 'Phone number is required';
+      } else if (!/^\d{10,}$/.test(formData.phone.replace(/\D/g, ''))) {
+        errors.phone = 'Please enter a valid phone number';
+      }
+
+      // Address validation
+      if (!formData.address.trim()) {
+        errors.address = 'Address is required';
+      }
+
+      // Password validation
+      if (!formData.password) {
+        errors.password = 'Password is required';
+      } else if (formData.password.length < 8) {
+        errors.password = 'Password must be at least 8 characters';
+      }
+
+      // Confirm password validation
+      if (formData.password !== formData.confirmPassword) {
+        errors.confirmPassword = 'Passwords do not match';
+      }
+
+      // Terms validation
+      if (!formData.terms) {
+        errors.terms = 'You must accept the terms and conditions';
+      }
+
+      return errors;
+    }
+
+    // Clear error messages
+    function clearErrors() {
+      document.querySelectorAll('.form-error').forEach(el => {
+        el.textContent = '';
+      });
+    }
+
+    // Display errors
+    function displayErrors(errors) {
+      clearErrors();
+      Object.keys(errors).forEach(field => {
+        const errorElement = document.getElementById(`${field}Error`);
+        if (errorElement) {
+          errorElement.textContent = errors[field];
+        }
+      });
+    }
+
+    // Form submission
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        password: document.getElementById('password').value,
+        confirmPassword: document.getElementById('confirmPassword').value,
+        terms: document.getElementById('terms').checked,
+        newsletter: document.getElementById('newsletter').checked
+      };
+
+      const errors = validateForm(formData);
+
+      if (Object.keys(errors).length === 0) {
+        // Save user data to localStorage
+        const userData = {
+          id: Date.now(),
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          newsletter: formData.newsletter,
+          createdAt: new Date().toISOString()
+        };
+
+        localStorage.setItem('user', JSON.stringify(userData));
+
+        // Show success message
+        showToast('Account created successfully! Redirecting...', 'success');
+
+        // Redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 2000);
+      } else {
+        displayErrors(errors);
+        showToast('Please fix the errors above', 'error');
+      }
+    });
+
+    // Password strength checker on input
+    document.getElementById('password').addEventListener('input', function() {
+      checkPasswordStrength(this.value);
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartBadge();
+    });
+  </script>
+</body>
+</html>

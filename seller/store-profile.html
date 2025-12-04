@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Store Profile - Seller Portal">
+  <title>Store Profile - Seller Portal</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/seller-layout.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-brand">
+          <span class="sidebar-brand-icon">🛒</span>
+          <span>Seller Portal</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Main</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📊</span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="products-manage.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📦</span>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="orders.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📋</span>
+                <span>Orders</span>
+                <span class="sidebar-link-badge">3</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="analytics.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📈</span>
+                <span>Analytics</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Store</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="store-profile.html" class="sidebar-link active">
+                <span class="sidebar-link-icon">🏪</span>
+                <span>Store Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="settings.html" class="sidebar-link">
+                <span class="sidebar-link-icon">⚙️</span>
+                <span>Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Support</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="help-center.html" class="sidebar-link">
+                <span class="sidebar-link-icon">❓</span>
+                <span>Help Center</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="../buyer/index.html" class="sidebar-link">
+                <span class="sidebar-link-icon">🏠</span>
+                <span>View Store</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar" style="background: var(--gradient-primary);">
+            CM
+          </div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Cabadbaran Market</div>
+            <div class="sidebar-user-role">Seller</div>
+          </div>
+          <span>⋮</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="sidebarToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <h1 class="topbar-title">Store Profile</h1>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-actions">
+            <button class="topbar-action" title="Notifications">
+              <span>🔔</span>
+              <span class="topbar-action-badge">5</span>
+            </button>
+            <button class="topbar-action" title="Messages">
+              <span>💬</span>
+              <span class="topbar-action-badge">2</span>
+            </button>
+            <button class="topbar-action" title="Logout">
+              <span>🚪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="page-header-top">
+            <div>
+              <h2 class="page-title">Store Profile 🏪</h2>
+              <p class="page-subtitle">Manage your store information and branding</p>
+            </div>
+            <div class="d-flex gap-3">
+              <button class="btn btn-outline" id="cancelBtn">
+                Cancel
+              </button>
+              <button class="btn btn-primary" id="saveProfileBtn">
+                <span>💾</span>
+                <span>Save Changes</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap: var(--space-6);">
+          <!-- Store Information -->
+          <div>
+            <div class="card mb-6">
+              <div class="card-header">
+                <h3 class="card-title">Store Information</h3>
+              </div>
+              <div class="card-body">
+                <form id="storeInfoForm">
+                  <div class="form-group">
+                    <label class="form-label">Store Name *</label>
+                    <input type="text" class="form-input" value="Cabadbaran Fresh Market" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Store Description</label>
+                    <textarea class="form-input" rows="4" placeholder="Tell customers about your store...">Fresh and quality products from local farms. Serving Cabadbaran City since 2020.</textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-input">
+                      <option>Supermarket</option>
+                      <option>Grocery Store</option>
+                      <option>Fresh Market</option>
+                      <option>Convenience Store</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Store Logo</label>
+                    <div style="display: flex; align-items: center; gap: var(--space-4);">
+                      <div class="avatar" style="width: 80px; height: 80px; background: var(--gradient-primary); font-size: 2rem;">
+                        CM
+                      </div>
+                      <div>
+                        <button type="button" class="btn btn-sm btn-outline">Upload Logo</button>
+                        <p class="text-muted" style="margin-top: var(--space-2); font-size: 0.875rem;">Recommended: 200x200px, PNG or JPG</p>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Business Hours</h3>
+              </div>
+              <div class="card-body">
+                <div style="display: grid; gap: var(--space-3);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Monday - Friday</span>
+                    <span class="text-muted">8:00 AM - 8:00 PM</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Saturday</span>
+                    <span class="text-muted">8:00 AM - 9:00 PM</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Sunday</span>
+                    <span class="text-muted">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <button class="btn btn-sm btn-outline" style="margin-top: var(--space-2);">
+                    Edit Hours
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact & Location -->
+          <div>
+            <div class="card mb-6">
+              <div class="card-header">
+                <h3 class="card-title">Contact Information</h3>
+              </div>
+              <div class="card-body">
+                <form id="contactForm">
+                  <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-input" value="+63 912 345 6789" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-input" value="freshmarket@cabadbaran.com" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Website (Optional)</label>
+                    <input type="url" class="form-input" placeholder="https://yourstore.com">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Facebook Page (Optional)</label>
+                    <input type="text" class="form-input" placeholder="facebook.com/yourstore">
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Store Location</h3>
+              </div>
+              <div class="card-body">
+                <form id="locationForm">
+                  <div class="form-group">
+                    <label class="form-label">Street Address *</label>
+                    <input type="text" class="form-input" value="123 Main Street" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Barangay *</label>
+                    <select class="form-input" required>
+                      <option>Poblacion</option>
+                      <option>Bayabas</option>
+                      <option>Kinda</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">City *</label>
+                    <input type="text" class="form-input" value="Cabadbaran City" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Province *</label>
+                    <input type="text" class="form-input" value="Agusan del Norte" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Postal Code</label>
+                    <input type="text" class="form-input" value="8600">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Store Stats -->
+        <div class="card mt-6">
+          <div class="card-header">
+            <h3 class="card-title">Store Statistics</h3>
+          </div>
+          <div class="card-body">
+            <div class="stats-grid">
+              <div style="text-align: center; padding: var(--space-4);">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: var(--space-2);">4.8</div>
+                <div class="text-muted">Average Rating</div>
+                <div style="color: #ffc107; margin-top: var(--space-1);">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div style="text-align: center; padding: var(--space-4);">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--success); margin-bottom: var(--space-2);">1,247</div>
+                <div class="text-muted">Total Reviews</div>
+              </div>
+              <div style="text-align: center; padding: var(--space-4);">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--warning); margin-bottom: var(--space-2);">45</div>
+                <div class="text-muted">Products Listed</div>
+              </div>
+              <div style="text-align: center; padding: var(--space-4);">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--info); margin-bottom: var(--space-2);">2.5K</div>
+                <div class="text-muted">Followers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/seller-main.js"></script>
+  <script src="assets/js/store-profile.js"></script>
+</body>
+</html>

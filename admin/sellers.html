@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sellers Management - Admin Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-brand">
+          <span class="sidebar-brand-icon">👑</span>
+          <span>Admin Portal</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Main</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📊</span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="users.html" class="sidebar-link">
+                <span class="sidebar-link-icon">👥</span>
+                <span>Users</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="sellers.html" class="sidebar-link active">
+                <span class="sidebar-link-icon">🏪</span>
+                <span>Sellers</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="products.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📦</span>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="orders.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📋</span>
+                <span>Orders</span>
+                <span class="sidebar-link-badge">12</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Analytics</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="analytics.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📈</span>
+                <span>Reports</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="revenue.html" class="sidebar-link">
+                <span class="sidebar-link-icon">💰</span>
+                <span>Revenue</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">System</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="settings.html" class="sidebar-link">
+                <span class="sidebar-link-icon">⚙️</span>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="logs.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📝</span>
+                <span>Activity Logs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar" style="background: var(--gradient-primary);">AD</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Admin</div>
+            <div class="sidebar-user-role">Administrator</div>
+          </div>
+          <span>⋮</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="sidebarToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <h1 class="topbar-title">Sellers Management</h1>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-search">
+            <span class="topbar-search-icon">🔍</span>
+            <input type="text" placeholder="Search sellers...">
+          </div>
+
+          <div class="topbar-actions">
+            <button class="topbar-action" title="Notifications">
+              <span>🔔</span>
+              <span class="topbar-action-badge">8</span>
+            </button>
+            <button class="topbar-action" title="Messages">
+              <span>💬</span>
+              <span class="topbar-action-badge">3</span>
+            </button>
+            <button class="topbar-action" title="Logout">
+              <span>🚪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-content">
+        <div class="page-header">
+          <div class="page-header-top">
+            <div>
+              <h2 class="page-title">Seller Management 🏪</h2>
+              <p class="page-subtitle">Manage and verify marketplace sellers</p>
+            </div>
+            <div class="d-flex gap-3">
+              <button class="btn btn-outline">
+                <span>📥</span>
+                <span>Export</span>
+              </button>
+              <button class="btn btn-primary">
+                <span>➕</span>
+                <span>Add Seller</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card animate-fadeIn">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">Total Sellers</div></div>
+              <div class="stat-card-icon primary">🏪</div>
+            </div>
+            <div class="stat-card-value">127</div>
+            <div class="stat-card-change positive">
+              <span>↑ 12%</span>
+              <span class="text-muted">vs last month</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-1">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">Verified</div></div>
+              <div class="stat-card-icon success">✓</div>
+            </div>
+            <div class="stat-card-value">98</div>
+            <div class="stat-card-change">
+              <span class="text-muted">77% verified</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-2">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">Pending Verification</div></div>
+              <div class="stat-card-icon warning">⏳</div>
+            </div>
+            <div class="stat-card-value">23</div>
+            <div class="stat-card-change">
+              <span class="text-muted">Needs review</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-3">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">Suspended</div></div>
+              <div class="stat-card-icon danger">⛔</div>
+            </div>
+            <div class="stat-card-value">6</div>
+            <div class="stat-card-change">
+              <span class="text-muted">5% of total</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-6">
+          <div class="card-body">
+            <div class="d-flex gap-3 flex-wrap">
+              <button class="btn btn-sm btn-primary">All Sellers</button>
+              <button class="btn btn-sm btn-outline">Verified</button>
+              <button class="btn btn-sm btn-outline">Pending</button>
+              <button class="btn btn-sm btn-outline">Suspended</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-table-container">
+          <div class="data-table-header">
+            <h3 class="data-table-title">All Sellers</h3>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Store Name</th>
+                <th>Owner</th>
+                <th>Products</th>
+                <th>Sales</th>
+                <th>Rating</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <div class="avatar" style="background: var(--gradient-primary);">FM</div>
+                    <span>Fresh Market</span>
+                  </div>
+                </td>
+                <td>Juan Dela Cruz</td>
+                <td>45</td>
+                <td>₱124,580</td>
+                <td>⭐ 4.8</td>
+                <td><span class="badge" style="background: var(--success);">✓ Verified</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">View</button>
+                  <button class="btn btn-sm btn-outline">Suspend</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <div class="avatar" style="background: var(--gradient-primary);">VH</div>
+                    <span>Veggie Haven</span>
+                  </div>
+                </td>
+                <td>Maria Santos</td>
+                <td>32</td>
+                <td>₱89,420</td>
+                <td>⭐ 4.6</td>
+                <td><span class="badge" style="background: var(--success);">✓ Verified</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">View</button>
+                  <button class="btn btn-sm btn-outline">Suspend</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <div class="avatar" style="background: var(--gradient-primary);">MG</div>
+                    <span>Morning Glory</span>
+                  </div>
+                </td>
+                <td>Pedro Reyes</td>
+                <td>28</td>
+                <td>₱56,780</td>
+                <td>⭐ 4.4</td>
+                <td><span class="badge" style="background: var(--warning);">Pending</span></td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Verify</button>
+                  <button class="btn btn-sm btn-outline">Reject</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/admin-main.js"></script>
+</body>
+</html>

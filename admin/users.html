@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users Management - Admin Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-brand">
+          <span class="sidebar-brand-icon">👑</span>
+          <span>Admin Portal</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Main</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📊</span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="users.html" class="sidebar-link active">
+                <span class="sidebar-link-icon">👥</span>
+                <span>Users</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="sellers.html" class="sidebar-link">
+                <span class="sidebar-link-icon">🏪</span>
+                <span>Sellers</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="products.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📦</span>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="orders.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📋</span>
+                <span>Orders</span>
+                <span class="sidebar-link-badge">12</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Analytics</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="analytics.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📈</span>
+                <span>Reports</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="revenue.html" class="sidebar-link">
+                <span class="sidebar-link-icon">💰</span>
+                <span>Revenue</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">System</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="settings.html" class="sidebar-link">
+                <span class="sidebar-link-icon">⚙️</span>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="logs.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📝</span>
+                <span>Activity Logs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar" style="background: var(--gradient-primary);">AD</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Admin</div>
+            <div class="sidebar-user-role">Administrator</div>
+          </div>
+          <span>⋮</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="sidebarToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <h1 class="topbar-title">Users Management</h1>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-search">
+            <span class="topbar-search-icon">🔍</span>
+            <input type="text" placeholder="Search users...">
+          </div>
+
+          <div class="topbar-actions">
+            <button class="topbar-action" title="Notifications">
+              <span>🔔</span>
+              <span class="topbar-action-badge">8</span>
+            </button>
+            <button class="topbar-action" title="Messages">
+              <span>💬</span>
+              <span class="topbar-action-badge">3</span>
+            </button>
+            <button class="topbar-action" title="Logout">
+              <span>🚪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-content">
+        <div class="page-header">
+          <div class="page-header-top">
+            <div>
+              <h2 class="page-title">User Management 👥</h2>
+              <p class="page-subtitle">Manage and monitor all registered users</p>
+            </div>
+            <div class="d-flex gap-3">
+              <button class="btn btn-outline">
+                <span>📥</span>
+                <span>Export</span>
+              </button>
+              <button class="btn btn-primary">
+                <span>➕</span>
+                <span>Add User</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card animate-fadeIn">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">Total Users</div></div>
+              <div class="stat-card-icon primary">👥</div>
+            </div>
+            <div class="stat-card-value">2,547</div>
+            <div class="stat-card-change positive">
+              <span>↑ 18%</span>
+              <span class="text-muted">vs last month</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-1">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">Active Users</div></div>
+              <div class="stat-card-icon success">✓</div>
+            </div>
+            <div class="stat-card-value">2,341</div>
+            <div class="stat-card-change positive">
+              <span>↑ 12%</span>
+              <span class="text-muted">vs last month</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-2">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">New This Month</div></div>
+              <div class="stat-card-icon info">📅</div>
+            </div>
+            <div class="stat-card-value">387</div>
+            <div class="stat-card-change positive">
+              <span>↑ 24%</span>
+              <span class="text-muted">vs last month</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-3">
+            <div class="stat-card-header">
+              <div><div class="stat-card-title">Inactive</div></div>
+              <div class="stat-card-icon warning">⏸</div>
+            </div>
+            <div class="stat-card-value">206</div>
+            <div class="stat-card-change">
+              <span class="text-muted">8% of total</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-6">
+          <div class="card-body">
+            <div class="d-flex gap-3 flex-wrap">
+              <button class="btn btn-sm btn-primary">All Users</button>
+              <button class="btn btn-sm btn-outline">Active</button>
+              <button class="btn btn-sm btn-outline">Inactive</button>
+              <button class="btn btn-sm btn-outline">Banned</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-table-container">
+          <div class="data-table-header">
+            <h3 class="data-table-title">All Users</h3>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Joined</th>
+                <th>Orders</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <div class="avatar" style="background: var(--gradient-primary);">JD</div>
+                    <span>Juan Dela Cruz</span>
+                  </div>
+                </td>
+                <td>juan@email.com</td>
+                <td>+63 912 345 6789</td>
+                <td>Nov 15, 2025</td>
+                <td>24</td>
+                <td><span class="badge" style="background: var(--success);">Active</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">Edit</button>
+                  <button class="btn btn-sm btn-outline">Ban</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <div class="avatar" style="background: var(--gradient-primary);">MS</div>
+                    <span>Maria Santos</span>
+                  </div>
+                </td>
+                <td>maria@email.com</td>
+                <td>+63 923 456 7890</td>
+                <td>Nov 20, 2025</td>
+                <td>18</td>
+                <td><span class="badge" style="background: var(--success);">Active</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">Edit</button>
+                  <button class="btn btn-sm btn-outline">Ban</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <div class="avatar" style="background: var(--gradient-primary);">PR</div>
+                    <span>Pedro Reyes</span>
+                  </div>
+                </td>
+                <td>pedro@email.com</td>
+                <td>+63 934 567 8901</td>
+                <td>Dec 1, 2025</td>
+                <td>5</td>
+                <td><span class="badge" style="background: var(--warning);">Inactive</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">Edit</button>
+                  <button class="btn btn-sm btn-outline">Ban</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/admin-main.js"></script>
+</body>
+</html>

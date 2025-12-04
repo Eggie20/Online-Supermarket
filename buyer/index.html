@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cabadbaran City Online Supermarket - Browse products from local supermarkets before visiting. Real-time stock availability."
+    />
+    <meta
+      name="keywords"
+      content="Cabadbaran, supermarket, online shopping, local products, fresh produce"
+    />
+    <title>Cabadbaran City Online Supermarket - Home</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+  </head>
+  <body>
+    <!-- Header/Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="navbar-brand">
+            <span style="font-size: 2rem">🛒</span>
+            <span>Cabadbaran Market</span>
+          </a>
+
+          <div class="navbar-search">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search for products, sellers, or categories..."
+              id="headerSearch"
+            />
+          </div>
+
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="navbar-actions">
+            <a href="products.html" class="navbar-link">
+              <span>🏪</span>
+              <span class="mobile-hidden">Browse</span>
+            </a>
+
+            <a href="wishlist.html" class="navbar-link">
+              <span>❤️</span>
+              <span class="mobile-hidden">Wishlist</span>
+            </a>
+
+            <a href="cart.html" class="navbar-link">
+              <span>🛒</span>
+              <span class="mobile-hidden">Cart</span>
+              <span class="navbar-badge" style="display: none">0</span>
+            </a>
+
+            <a href="login.html" class="btn btn-primary btn-sm"> Login </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title animate-fadeIn">Shop Local, Shop Smart</h1>
+          <p class="hero-subtitle animate-fadeIn stagger-1">
+            Browse products from Cabadbaran City's supermarkets before you visit
+          </p>
+          <div
+            class="d-flex justify-center gap-4 mt-8 animate-fadeIn stagger-2"
+          >
+            <a
+              href="products.html"
+              class="btn btn-lg"
+              style="background: white; color: var(--primary)"
+            >
+              Browse Products
+            </a>
+            <a
+              href="register.html"
+              class="btn btn-lg btn-outline"
+              style="border-color: white; color: white"
+            >
+              Sign Up Free
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title scroll-fade-in">How It Works</h2>
+          <p class="section-subtitle scroll-fade-in">
+            Simple steps to shop smarter
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card text-center scroll-fade-in stagger-1">
+            <div class="card-body">
+              <div style="font-size: 4rem; margin-bottom: var(--space-4)">
+                🔍
+              </div>
+              <h3 class="card-title">Browse Products</h3>
+              <p>
+                Search and filter products from multiple local supermarkets in
+                one place.
+              </p>
+            </div>
+          </div>
+
+          <div class="card text-center scroll-fade-in stagger-2">
+            <div class="card-body">
+              <div style="font-size: 4rem; margin-bottom: var(--space-4)">
+                ✓
+              </div>
+              <h3 class="card-title">Check Availability</h3>
+              <p>
+                See real-time stock levels before making the trip to the store.
+              </p>
+            </div>
+          </div>
+
+          <div class="card text-center scroll-fade-in stagger-3">
+            <div class="card-body">
+              <div style="font-size: 4rem; margin-bottom: var(--space-4)">
+                🏪
+              </div>
+              <h3 class="card-title">Visit & Purchase</h3>
+              <p>
+                Head to your chosen supermarket knowing exactly what's
+                available.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" style="background-color: white">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title scroll-fade-in">Featured Products</h2>
+          <p class="section-subtitle scroll-fade-in">
+            Fresh picks from local supermarkets
+          </p>
+        </div>
+
+        <div class="products-grid" id="featuredProducts">
+          <!-- Products will be loaded here by JavaScript -->
+        </div>
+
+        <div class="text-center mt-8">
+          <a href="products.html" class="btn btn-primary btn-lg">
+            View All Products
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title scroll-fade-in">Shop by Category</h2>
+          <p class="section-subtitle scroll-fade-in">
+            Find what you need quickly
+          </p>
+        </div>
+
+        <div class="grid grid-4" id="categoriesGrid">
+          <!-- Categories will be loaded here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Sellers -->
+    <section class="section" style="background-color: white">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title scroll-fade-in">Trusted Sellers</h2>
+          <p class="section-subtitle scroll-fade-in">
+            Verified local supermarkets
+          </p>
+        </div>
+
+        <div class="grid grid-3" id="sellersGrid">
+          <!-- Sellers will be loaded here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="section"
+      style="
+        background: var(--gradient-primary);
+        color: white;
+        text-align: center;
+      "
+    >
+      <div class="container">
+        <h2 class="section-title" style="color: white">
+          Ready to Start Shopping?
+        </h2>
+        <p
+          class="section-subtitle"
+          style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--space-8)"
+        >
+          Join hundreds of shoppers making smarter purchasing decisions
+        </p>
+        <a
+          href="register.html"
+          class="btn btn-lg"
+          style="background: white; color: var(--primary)"
+        >
+          Create Free Account
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>About Us</h3>
+            <p style="color: rgba(255, 255, 255, 0.7)">
+              Connecting Cabadbaran City's local supermarkets with smart
+              shoppers. Browse before you buy.
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="products.html" class="footer-link">Browse Products</a>
+              <a href="register.html" class="footer-link">Sign Up</a>
+              <a href="login.html" class="footer-link">Login</a>
+              <a href="#" class="footer-link">Become a Seller</a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Categories</h3>
+            <div class="footer-links">
+              <a href="products.html?category=Vegetables" class="footer-link"
+                >Vegetables</a
+              >
+              <a href="products.html?category=Fruits" class="footer-link"
+                >Fruits</a
+              >
+              <a href="products.html?category=Dairy" class="footer-link"
+                >Dairy</a
+              >
+              <a href="products.html?category=Meat" class="footer-link">Meat</a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <div class="footer-links">
+              <a href="mailto:info@cabadbaran-market.com" class="footer-link"
+                >info@cabadbaran-market.com</a
+              >
+              <a href="tel:+639123456789" class="footer-link"
+                >+63 912 345 6789</a
+              >
+              <p
+                style="
+                  color: rgba(255, 255, 255, 0.7);
+                  margin-top: var(--space-2);
+                "
+              >
+                Cabadbaran City, Agusan del Norte
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Cabadbaran City Online Supermarket. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/products-data.js"></script>
+    <script src="assets/js/home.js"></script>
+  </body>
+</html>

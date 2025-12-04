@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="User Profile - Cabadbaran City Online Supermarket"
+  />
+  <meta
+    name="keywords"
+    content="profile, account, orders, settings, Cabadbaran supermarket"
+  />
+  <title>My Profile - Cabadbaran City Online Supermarket</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+</head>
+<body>
+  <!-- Header/Navigation -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+          <span style="font-size: 2rem">🛒</span>
+          <span>Cabadbaran Market</span>
+        </a>
+
+        <div class="navbar-search">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search for products..."
+            id="headerSearch"
+          />
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="navbar-actions">
+          <a href="products.html" class="navbar-link">
+            <span>🏪</span>
+            <span class="mobile-hidden">Browse</span>
+          </a>
+
+          <a href="wishlist.html" class="navbar-link">
+            <span>❤️</span>
+            <span class="mobile-hidden">Wishlist</span>
+          </a>
+
+          <a href="cart.html" class="navbar-link">
+            <span>🛒</span>
+            <span class="mobile-hidden">Cart</span>
+            <span class="navbar-badge" style="display: none">0</span>
+          </a>
+
+          <button class="btn btn-outline btn-sm" onclick="logout()"> Logout </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="section">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="page-header" style="margin-bottom: var(--space-6);">
+          <h1 class="page-title">My Profile</h1>
+          <p class="page-subtitle">Manage your account and preferences</p>
+        </div>
+
+        <div class="grid grid-3" style="gap: var(--space-6);">
+          <!-- Sidebar -->
+          <div>
+            <div class="card">
+              <div class="card-body">
+                <div style="text-align: center; margin-bottom: var(--space-4);">
+                  <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: var(--gradient-primary);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin: 0 auto var(--space-3);
+                  " id="userAvatar">
+                    U
+                  </div>
+                  <h3 id="userName">User Name</h3>
+                  <p class="text-muted" id="userEmail">user@email.com</p>
+                </div>
+
+                <nav style="display: flex; flex-direction: column; gap: var(--space-2);">
+                  <button
+                    class="profile-nav-item active"
+                    onclick="switchTab('account')"
+                    style="
+                      padding: var(--space-3);
+                      border: none;
+                      background: none;
+                      text-align: left;
+                      cursor: pointer;
+                      border-radius: var(--radius-md);
+                      transition: background-color 0.3s;
+                    "
+                  >
+                    👤 Account Information
+                  </button>
+                  <button
+                    class="profile-nav-item"
+                    onclick="switchTab('orders')"
+                    style="
+                      padding: var(--space-3);
+                      border: none;
+                      background: none;
+                      text-align: left;
+                      cursor: pointer;
+                      border-radius: var(--radius-md);
+                      transition: background-color 0.3s;
+                    "
+                  >
+                    📋 Order History
+                  </button>
+                  <button
+                    class="profile-nav-item"
+                    onclick="switchTab('settings')"
+                    style="
+                      padding: var(--space-3);
+                      border: none;
+                      background: none;
+                      text-align: left;
+                      cursor: pointer;
+                      border-radius: var(--radius-md);
+                      transition: background-color 0.3s;
+                    "
+                  >
+                    ⚙️ Settings
+                  </button>
+                  <button
+                    class="profile-nav-item"
+                    onclick="switchTab('seller')"
+                    style="
+                      padding: var(--space-3);
+                      border: none;
+                      background: none;
+                      text-align: left;
+                      cursor: pointer;
+                      border-radius: var(--radius-md);
+                      transition: background-color 0.3s;
+                    "
+                  >
+                    🏪 Become a Seller
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div style="grid-column: span 2;">
+            <!-- Account Information Tab -->
+            <div id="accountTab" class="profile-tab animate-fadeIn">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Account Information</h3>
+                </div>
+                <div class="card-body">
+                  <form id="accountForm" class="form">
+                    <div class="form-group">
+                      <label class="form-label">Full Name</label>
+                      <input
+                        type="text"
+                        id="fullName"
+                        class="form-input"
+                        placeholder="Enter your full name"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Email Address</label>
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-input"
+                        placeholder="Enter your email"
+                        disabled
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Phone Number</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        class="form-input"
+                        placeholder="Enter your phone number"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Address</label>
+                      <input
+                        type="text"
+                        id="address"
+                        class="form-input"
+                        placeholder="Enter your address"
+                      />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                      Save Changes
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Order History Tab -->
+            <div id="ordersTab" class="profile-tab" style="display: none;">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Order History</h3>
+                </div>
+                <div class="card-body">
+                  <div id="ordersContainer">
+                    <!-- Orders will be loaded here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settingsTab" class="profile-tab" style="display: none;">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Settings</h3>
+                </div>
+                <div class="card-body">
+                  <form id="settingsForm" class="form">
+                    <div style="margin-bottom: var(--space-4);">
+                      <h4 style="margin-bottom: var(--space-3);">Notifications</h4>
+                      <label style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); cursor: pointer;">
+                        <input type="checkbox" id="emailNotifications" checked />
+                        <span>Email notifications for orders</span>
+                      </label>
+                      <label style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); cursor: pointer;">
+                        <input type="checkbox" id="promotionalEmails" checked />
+                        <span>Promotional emails and offers</span>
+                      </label>
+                      <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                        <input type="checkbox" id="smsNotifications" />
+                        <span>SMS notifications</span>
+                      </label>
+                    </div>
+
+                    <hr style="border: none; border-top: 1px solid var(--border); margin: var(--space-4) 0;" />
+
+                    <div style="margin-bottom: var(--space-4);">
+                      <h4 style="margin-bottom: var(--space-3);">Privacy</h4>
+                      <label style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); cursor: pointer;">
+                        <input type="checkbox" id="profileVisibility" checked />
+                        <span>Make profile visible to other users</span>
+                      </label>
+                      <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                        <input type="checkbox" id="shareData" />
+                        <span>Share data for personalized recommendations</span>
+                      </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                      Save Settings
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Danger Zone -->
+              <div class="card" style="margin-top: var(--space-4); border-color: var(--danger);">
+                <div class="card-header" style="border-bottom-color: var(--danger);">
+                  <h3 class="card-title" style="color: var(--danger);">Danger Zone</h3>
+                </div>
+                <div class="card-body">
+                  <p class="text-muted" style="margin-bottom: var(--space-3);">
+                    These actions cannot be undone. Please proceed with caution.
+                  </p>
+                  <button class="btn btn-outline" style="color: var(--danger); border-color: var(--danger);">
+                    Change Password
+                  </button>
+                  <button class="btn btn-outline" style="color: var(--danger); border-color: var(--danger); margin-left: var(--space-2);">
+                    Delete Account
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Become a Seller Tab -->
+            <div id="sellerTab" class="profile-tab" style="display: none;">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Become a Seller</h3>
+                </div>
+                <div class="card-body">
+                  <div style="margin-bottom: var(--space-4);">
+                    <h4 style="margin-bottom: var(--space-2);">Why become a seller?</h4>
+                    <ul style="list-style: none; padding: 0;">
+                      <li style="margin-bottom: var(--space-2);">✓ Reach thousands of customers</li>
+                      <li style="margin-bottom: var(--space-2);">✓ Manage your inventory online</li>
+                      <li style="margin-bottom: var(--space-2);">✓ Track sales and analytics</li>
+                      <li style="margin-bottom: var(--space-2);">✓ Get paid directly to your account</li>
+                      <li>✓ Grow your business with our platform</li>
+                    </ul>
+                  </div>
+
+                  <hr style="border: none; border-top: 1px solid var(--border); margin: var(--space-4) 0;" />
+
+                  <div style="margin-bottom: var(--space-4);">
+                    <h4 style="margin-bottom: var(--space-2);">Requirements</h4>
+                    <ul style="list-style: none; padding: 0; color: var(--text-light);">
+                      <li style="margin-bottom: var(--space-1);">• Valid business registration</li>
+                      <li style="margin-bottom: var(--space-1);">• Tax identification number</li>
+                      <li style="margin-bottom: var(--space-1);">• Bank account for payments</li>
+                      <li>• Valid contact information</li>
+                    </ul>
+                  </div>
+
+                  <a href="../seller/seller-register.html" class="btn btn-primary btn-lg">
+                    Start Selling Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p style="color: rgba(255, 255, 255, 0.7);">
+            Connecting Cabadbaran City's local supermarkets with smart shoppers.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="products.html" class="footer-link">Browse Products</a>
+            <a href="cart.html" class="footer-link">Cart</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <a href="mailto:info@cabadbaran-market.com" class="footer-link">
+              info@cabadbaran-market.com
+            </a>
+            <a href="tel:+639123456789" class="footer-link">+63 912 345 6789</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cabadbaran City Online Supermarket. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Styles -->
+  <style>
+    .profile-nav-item {
+      color: var(--text-light);
+    }
+
+    .profile-nav-item:hover {
+      background-color: var(--background);
+      color: var(--text-dark);
+    }
+
+    .profile-nav-item.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .profile-tab {
+      animation: fadeIn 0.3s ease-in;
+    }
+  </style>
+
+  <!-- JavaScript Files -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/products-data.js"></script>
+
+  <!-- Profile Page Script -->
+  <script>
+    // Load user data
+    function loadUserData() {
+      const user = JSON.parse(localStorage.getItem('user')) || {
+        fullName: 'Guest User',
+        email: 'guest@example.com',
+        phone: '',
+        address: ''
+      };
+
+      document.getElementById('userName').textContent = user.fullName;
+      document.getElementById('userEmail').textContent = user.email;
+      document.getElementById('userAvatar').textContent = user.fullName.charAt(0).toUpperCase();
+
+      document.getElementById('fullName').value = user.fullName;
+      document.getElementById('email').value = user.email;
+      document.getElementById('phone').value = user.phone || '';
+      document.getElementById('address').value = user.address || '';
+    }
+
+    // Switch tabs
+    function switchTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.profile-tab').forEach(tab => {
+        tab.style.display = 'none';
+      });
+
+      // Remove active class from all nav items
+      document.querySelectorAll('.profile-nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Show selected tab
+      document.getElementById(tabName + 'Tab').style.display = 'block';
+
+      // Add active class to clicked nav item
+      event.target.classList.add('active');
+
+      // Load orders if orders tab
+      if (tabName === 'orders') {
+        loadOrders();
+      }
+    }
+
+    // Load orders
+    function loadOrders() {
+      const container = document.getElementById('ordersContainer');
+      const orders = [
+        {
+          id: 'ORD-001',
+          date: '2025-01-15',
+          total: 1250,
+          status: 'Delivered',
+          items: 3
+        },
+        {
+          id: 'ORD-002',
+          date: '2025-01-10',
+          total: 850,
+          status: 'Delivered',
+          items: 2
+        },
+        {
+          id: 'ORD-003',
+          date: '2025-01-05',
+          total: 2100,
+          status: 'Processing',
+          items: 5
+        }
+      ];
+
+      container.innerHTML = orders.map(order => `
+        <div class="card" style="margin-bottom: var(--space-3);">
+          <div style="display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: center; padding: var(--space-3);">
+            <div>
+              <h4 style="margin-bottom: var(--space-1);">${order.id}</h4>
+              <p class="text-muted" style="margin-bottom: var(--space-1);">
+                ${new Date(order.date).toLocaleDateString()} • ${order.items} items
+              </p>
+              <p style="font-weight: 600;">₱${formatCurrency(order.total)}</p>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge" style="
+                background: ${order.status === 'Delivered' ? 'var(--success)' : 'var(--warning)'};
+                color: white;
+              ">
+                ${order.status}
+              </span>
+              <button class="btn btn-sm btn-outline" style="margin-top: var(--space-2); display: block;">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Save account changes
+    document.getElementById('accountForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const user = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value
+      };
+
+      localStorage.setItem('user', JSON.stringify(user));
+      showToast('Profile updated successfully!', 'success');
+      loadUserData();
+    });
+
+    // Save settings
+    document.getElementById('settingsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const settings = {
+        emailNotifications: document.getElementById('emailNotifications').checked,
+        promotionalEmails: document.getElementById('promotionalEmails').checked,
+        smsNotifications: document.getElementById('smsNotifications').checked,
+        profileVisibility: document.getElementById('profileVisibility').checked,
+        shareData: document.getElementById('shareData').checked
+      };
+
+      localStorage.setItem('user_settings', JSON.stringify(settings));
+      showToast('Settings saved successfully!', 'success');
+    });
+
+    // Logout
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('user');
+        localStorage.removeItem('user_settings');
+        showToast('Logged out successfully', 'info');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1000);
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      loadUserData();
+      updateCartBadge();
+    });
+  </script>
+</body>
+</html>
