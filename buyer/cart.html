@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Shopping Cart - Cabadbaran City Online Supermarket"
+    content="My Cart - Cabadbaran City Online Supermarket"
   />
   <meta
     name="keywords"
-    content="shopping cart, checkout, products, Cabadbaran supermarket"
+    content="shopping cart, products, Cabadbaran supermarket"
   />
-  <title>Shopping Cart - Cabadbaran City Online Supermarket</title>
+  <title>My Cart - Cabadbaran City Online Supermarket</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -84,8 +84,8 @@
       <div class="container">
         <!-- Page Header -->
         <div class="page-header" style="margin-bottom: var(--space-6);">
-          <h1 class="page-title">Shopping Cart</h1>
-          <p class="page-subtitle">Review and manage your items</p>
+          <h1 class="page-title">My Cart</h1>
+          <p class="page-subtitle">View your saved items</p>
         </div>
 
         <div class="grid grid-2" style="gap: var(--space-6);">
@@ -114,72 +114,50 @@
           <div>
             <div class="card" style="position: sticky; top: var(--space-4);">
               <div class="card-header">
-                <h3 class="card-title">Order Summary</h3>
+                <h3 class="card-title">Cart Summary</h3>
               </div>
 
               <div class="card-body">
                 <!-- Summary Items -->
                 <div style="margin-bottom: var(--space-4);">
                   <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3);">
+                    <span class="text-muted">Total Items</span>
+                    <span id="totalItems">0</span>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3);">
                     <span class="text-muted">Subtotal</span>
-                    <span id="subtotal">0.00</span>
-                  </div>
-
-                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3);">
-                    <span class="text-muted">Shipping</span>
-                    <span id="shipping">0.00</span>
-                  </div>
-
-                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3);">
-                    <span class="text-muted">Tax (12%)</span>
-                    <span id="tax">0.00</span>
+                    <span id="subtotal">₱0.00</span>
                   </div>
 
                   <hr style="border: none; border-top: 1px solid var(--border); margin: var(--space-3) 0;" />
 
                   <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.1rem;">
-                    <span>Total</span>
-                    <span id="total" style="color: var(--primary);">0.00</span>
+                    <span>Estimated Total</span>
+                    <span id="total" style="color: var(--primary);">₱0.00</span>
                   </div>
                 </div>
-
-                <!-- Promo Code -->
-                <div style="margin-bottom: var(--space-4);">
-                  <label class="form-label">Promo Code</label>
-                  <div style="display: flex; gap: var(--space-2);">
-                    <input
-                      type="text"
-                      id="promoCode"
-                      class="form-input"
-                      placeholder="Enter promo code"
-                      style="flex: 1;"
-                    />
-                    <button class="btn btn-outline" id="applyPromoBtn">
-                      Apply
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Checkout Button -->
-                <button class="btn btn-primary btn-block" id="checkoutBtn">
-                  Proceed to Checkout
-                </button>
 
                 <!-- Continue Shopping -->
-                <a href="products.html" class="btn btn-outline btn-block" style="margin-top: var(--space-2);">
+                <a href="products.html" class="btn btn-primary btn-block">
                   Continue Shopping
                 </a>
+
+                <!-- Clear Cart -->
+                <button class="btn btn-outline btn-block" id="clearCartBtn" style="margin-top: var(--space-2);">
+                  Clear Cart
+                </button>
               </div>
             </div>
 
             <!-- Info Box -->
             <div class="card" style="margin-top: var(--space-4); background-color: #f0f4ff;">
               <div class="card-body">
-                <h4 style="margin-bottom: var(--space-2); color: var(--primary);">💡 Shopping Tips</h4>
+                <h4 style="margin-bottom: var(--space-2); color: var(--primary);">💡 Cart Info</h4>
                 <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-light);">
-                  <li style="margin-bottom: var(--space-1);">✓ Free shipping on orders over ₱500</li>
-                  <li style="margin-bottom: var(--space-1);">✓ Check product availability before checkout</li>
-                  <li>✓ Save items to wishlist for later</li>
+                  <li style="margin-bottom: var(--space-1);">✓ Items in your cart are saved</li>
+                  <li style="margin-bottom: var(--space-1);">✓ Manage quantities anytime</li>
+                  <li>✓ Add items to wishlist for later</li>
                 </ul>
               </div>
             </div>

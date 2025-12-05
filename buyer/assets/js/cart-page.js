@@ -1,6 +1,6 @@
 /**
- * Shopping Cart Page - Functionality
- * Handles cart display, updates, and checkout
+ * Cart Page - Functionality
+ * Handles cart display and management (view only, no checkout)
  */
 
 class CartPageManager {
@@ -22,26 +22,10 @@ class CartPageManager {
   }
 
   setupEventListeners() {
-    // Promo code button
-    const applyPromoBtn = document.getElementById('applyPromoBtn');
-    if (applyPromoBtn) {
-      applyPromoBtn.addEventListener('click', () => this.applyPromoCode());
-    }
-
-    // Checkout button
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) {
-      checkoutBtn.addEventListener('click', () => this.proceedToCheckout());
-    }
-
-    // Promo code input - allow Enter key
-    const promoInput = document.getElementById('promoCode');
-    if (promoInput) {
-      promoInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          this.applyPromoCode();
-        }
-      });
+    // Clear cart button
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener('click', () => this.clearCart());
     }
   }
 
@@ -169,6 +153,7 @@ class CartPageManager {
         this.cart.removeItem(productId);
         this.renderCart();
         this.updateSummary();
+        AppUtils.toast.info('Item removed from cart');
       });
     });
   }
@@ -176,94 +161,31 @@ class CartPageManager {
   updateSummary() {
     const items = this.cart.getItems();
     const subtotal = this.cart.getTotal();
-    const shipping = subtotal > 500 ? 0 : 50;
-    const tax = subtotal * 0.12;
-    const total = subtotal + shipping + tax;
+    const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
+    document.getElementById('totalItems').textContent = totalItems;
     document.getElementById('subtotal').textContent = AppUtils.formatCurrency(subtotal);
-    document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : AppUtils.formatCurrency(shipping);
-    document.getElementById('tax').textContent = AppUtils.formatCurrency(tax);
-    document.getElementById('total').textContent = AppUtils.formatCurrency(total);
+    document.getElementById('total').textContent = AppUtils.formatCurrency(subtotal);
 
-    // Update checkout button state
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) {
-      checkoutBtn.disabled = items.length === 0;
+    // Update clear cart button state
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    if (clearCartBtn) {
+      clearCartBtn.disabled = items.length === 0;
     }
   }
 
-  applyPromoCode() {
-    const code = document.getElementById('promoCode').value.toUpperCase().trim();
-    
-    if (!code) {
-      AppUtils.toast.warning('Please enter a promo code');
+  clearCart() {
+    if (this.cart.getItems().length === 0) {
+      AppUtils.toast.warning('Your cart is already empty');
       return;
     }
 
-    const promoCodes = {
-      'SAVE10': { discount: 0.10, label: '10% off' },
-      'SAVE20': { discount: 0.20, label: '20% off' },
-      'FREESHIP': { discount: 0, label: 'Free shipping' }
-    };
-
-    if (promoCodes[code]) {
-      AppUtils.toast.success(`Promo code "${code}" applied! ${promoCodes[code].label}`);
-      // In a real app, this would update the cart calculation
-      document.getElementById('promoCode').disabled = true;
-      document.getElementById('applyPromoBtn').disabled = true;
-    } else {
-      AppUtils.toast.error('Invalid promo code');
-    }
-  }
-
-  proceedToCheckout() {
-    const items = this.cart.getItems();
-    
-    if (items.length === 0) {
-      AppUtils.toast.warning('Your cart is empty');
-      return;
-    }
-
-    // Validate stock availability
-    for (let item of items) {
-      if (item.quantity > item.stock) {
-        AppUtils.toast.error(`${item.name} has insufficient stock`);
-        return;
-      }
-    }
-
-    // Save checkout data
-    const subtotal = this.cart.getTotal();
-    const shipping = subtotal > 500 ? 0 : 50;
-    const tax = subtotal * 0.12;
-    const total = subtotal + shipping + tax;
-
-    const checkoutData = {
-      items: items,
-      subtotal: subtotal,
-      shipping: shipping,
-      tax: tax,
-      total: total,
-      timestamp: new Date().toISOString(),
-      orderId: 'ORD-' + Date.now()
-    };
-
-    AppUtils.setLocalStorage('checkout_data', checkoutData);
-
-    // Show success message
-    AppUtils.toast.success('Order placed successfully!');
-
-    // Simulate order processing
-    setTimeout(() => {
-      // Clear cart after successful checkout
+    if (confirm('Are you sure you want to clear all items from your cart?')) {
       this.cart.clearCart();
-      
-      // Show order confirmation
-      alert(`Thank you for your order!\n\nOrder ID: ${checkoutData.orderId}\nTotal: ${AppUtils.formatCurrency(total)}\n\nThis is a demo - no payment processing.`);
-      
-      // Redirect to home
-      window.location.href = 'index.html';
-    }, 1500);
+      this.renderCart();
+      this.updateSummary();
+      AppUtils.toast.success('Cart cleared successfully');
+    }
   }
 }
 
