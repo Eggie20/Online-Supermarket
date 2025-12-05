@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Orders Management - Admin Portal">
+  <title>Orders - Admin Portal</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/admin-layout.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-brand">
+          <span class="sidebar-brand-icon">👑</span>
+          <span>Admin Portal</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Main</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="dashboard.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📊</span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="users.html" class="sidebar-link">
+                <span class="sidebar-link-icon">👥</span>
+                <span>Users</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="sellers.html" class="sidebar-link">
+                <span class="sidebar-link-icon">🏪</span>
+                <span>Sellers</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="products.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📦</span>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="orders.html" class="sidebar-link active">
+                <span class="sidebar-link-icon">📋</span>
+                <span>Orders</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">Analytics</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="analytics.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📈</span>
+                <span>Reports</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="revenue.html" class="sidebar-link">
+                <span class="sidebar-link-icon">💰</span>
+                <span>Revenue</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-section-title">System</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a href="settings.html" class="sidebar-link">
+                <span class="sidebar-link-icon">⚙️</span>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="logs.html" class="sidebar-link">
+                <span class="sidebar-link-icon">📝</span>
+                <span>Activity Logs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar" style="background: var(--gradient-primary);">
+            AD
+          </div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Admin</div>
+            <div class="sidebar-user-role">Administrator</div>
+          </div>
+          <span>⋮</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="sidebarToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <h1 class="topbar-title">Orders</h1>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-search">
+            <span class="topbar-search-icon">🔍</span>
+            <input type="text" placeholder="Search orders..." id="searchOrders">
+          </div>
+
+          <div class="topbar-actions">
+            <button class="topbar-action" title="Notifications">
+              <span>🔔</span>
+            </button>
+            <button class="topbar-action" title="Logout">
+              <span>🚪</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="page-header-top">
+            <div>
+              <h2 class="page-title">All Orders</h2>
+              <p class="page-subtitle">View all orders across the platform</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card animate-fadeIn">
+            <div class="stat-card-header">
+              <div>
+                <div class="stat-card-title">Total Orders</div>
+              </div>
+              <div class="stat-card-icon primary">
+                📋
+              </div>
+            </div>
+            <div class="stat-card-value">5,432</div>
+            <div class="stat-card-change positive">
+              <span>↑ 15%</span>
+              <span class="text-muted">vs last month</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-1">
+            <div class="stat-card-header">
+              <div>
+                <div class="stat-card-title">Pending</div>
+              </div>
+              <div class="stat-card-icon warning">
+                ⏳
+              </div>
+            </div>
+            <div class="stat-card-value">342</div>
+            <div class="stat-card-change">
+              <span class="text-muted">Awaiting processing</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-2">
+            <div class="stat-card-header">
+              <div>
+                <div class="stat-card-title">Completed</div>
+              </div>
+              <div class="stat-card-icon success">
+                ✓
+              </div>
+            </div>
+            <div class="stat-card-value">4,890</div>
+            <div class="stat-card-change positive">
+              <span>↑ 12%</span>
+              <span class="text-muted">this month</span>
+            </div>
+          </div>
+
+          <div class="stat-card animate-fadeIn stagger-3">
+            <div class="stat-card-header">
+              <div>
+                <div class="stat-card-title">Cancelled</div>
+              </div>
+              <div class="stat-card-icon danger">
+                ✗
+              </div>
+            </div>
+            <div class="stat-card-value">200</div>
+            <div class="stat-card-change negative">
+              <span>↓ 5%</span>
+              <span class="text-muted">vs last month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="card mb-6">
+          <div class="card-body">
+            <div class="d-flex gap-3 flex-wrap">
+              <button class="btn btn-sm btn-primary filter-btn active" data-filter="all">
+                All Orders
+              </button>
+              <button class="btn btn-sm btn-outline filter-btn" data-filter="pending">
+                Pending
+              </button>
+              <button class="btn btn-sm btn-outline filter-btn" data-filter="processing">
+                Processing
+              </button>
+              <button class="btn btn-sm btn-outline filter-btn" data-filter="completed">
+                Completed
+              </button>
+              <button class="btn btn-sm btn-outline filter-btn" data-filter="cancelled">
+                Cancelled
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="data-table-container">
+          <div class="data-table-header">
+            <h3 class="data-table-title">Order List</h3>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Seller</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td>#ORD-001</td>
+                <td>Juan Dela Cruz</td>
+                <td>Fresh Market</td>
+                <td>₱1,250</td>
+                <td><span class="badge" style="background: var(--success);">Completed</span></td>
+                <td>Dec 4, 2025</td>
+                <td>
+                  <button class="btn btn-sm btn-outline">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#ORD-002</td>
+                <td>Maria Santos</td>
+                <td>Veggie Haven</td>
+                <td>₱850</td>
+                <td><span class="badge" style="background: var(--warning);">Processing</span></td>
+                <td>Dec 4, 2025</td>
+                <td>
+                  <button class="btn btn-sm btn-outline">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#ORD-003</td>
+                <td>Pedro Reyes</td>
+                <td>Morning Glory</td>
+                <td>₱2,100</td>
+                <td><span class="badge" style="background: var(--info);">Pending</span></td>
+                <td>Dec 3, 2025</td>
+                <td>
+                  <button class="btn btn-sm btn-outline">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#ORD-004</td>
+                <td>Ana Garcia</td>
+                <td>Fresh Market</td>
+                <td>₱3,450</td>
+                <td><span class="badge" style="background: var(--success);">Completed</span></td>
+                <td>Dec 2, 2025</td>
+                <td>
+                  <button class="btn btn-sm btn-outline">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#ORD-005</td>
+                <td>Carlos Lopez</td>
+                <td>Veggie Haven</td>
+                <td>₱1,800</td>
+                <td><span class="badge" style="background: var(--danger);">Cancelled</span></td>
+                <td>Dec 1, 2025</td>
+                <td>
+                  <button class="btn btn-sm btn-outline">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/admin-main.js"></script>
+  <script>
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('btn-primary');
+          b.classList.add('btn-outline');
+        });
+        btn.classList.remove('btn-outline');
+        btn.classList.add('btn-primary');
+      });
+    });
+  </script>
+</body>
+</html>
